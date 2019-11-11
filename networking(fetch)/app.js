@@ -1,4 +1,20 @@
+// npm i node-fetch --save
 const fetch = require("../node_modules/node-fetch");
+
+ /*
+   CHAINING PROMISES WITH FETCH
+  */
+
+//  Function that holds response error
+const status = (response) => {
+    if(response.status >= 200 && response.status < 300) {
+       return Promise.resolve(response);
+    } else {
+        return Promise.reject(new Error(response.statusText));
+    }
+}
+//  Function that parses json response
+const json = response => { return response.json() };
 /*
  *
  *
@@ -31,21 +47,9 @@ fetch('https://api.github.com/users', {mode: 'cors'})
  * 
  */
 
- /*
-   CHAINING PROMISES WITH FETCH
-  */
-//  Function that holds response error
- const status = (response) => {
-     if(response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-     } else {
-         return Promise.reject(new Error(response.statusText));
-     }
- }
-//  Function that parses json response
-const json = response => { return response.json() };
-
-fetch('https://api.github.com/users')
+/** Combining the fetch function with the function declared above
+ * 
+ * fetch('https://api.github.com/users/joshtom')
 .then(status)
 .then(json)
 .then((data) => {
@@ -54,3 +58,68 @@ fetch('https://api.github.com/users')
 .catch((err) => {
     console.log('Request failed', err);
 })
+ */
+
+/**
+ * POST request with a Fetch Request
+ * 
+ * fetch("https://api.github.com/users/joshtom", {
+    method: 'POST',
+    headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: 'foo=bar&lorem=ipsum',
+})
+.then(json)
+.then(function(data) {
+    console.log("Request succeeded with JSON response", data);
+}).then((err) => {
+    console.log("Error fetching", err);
+})
+ */
+
+ /**
+  * FUNCTION THAT RETURN GITHUB USERS GISTS
+  */
+
+//   async function getUsers(names) {
+//     let jobs = [];
+
+//     for (let name of names) {
+//         let job = fetch(`https://api.github.com/users/${name}`)
+//         .then(status)
+//         .then(json)
+//         .catch((err) => {console.log("Error", err) })
+//         jobs.push(job);
+//     }
+//     let results = await Promise.all(jobs);
+
+//     return results;
+
+//   }
+
+ async function getUser (names) {
+    let jobs = [];
+    for(name of names) {
+        // let job = fetch(`https://api.github.com/users/${name}`)
+        let job = fetch(`https://thesimpsonsquoteapi.glitch.me/${name}`)
+        .then(status)
+        .then(json)
+        .then(data => {
+            console.log("Data retrieved", data);
+        }).catch(err => {
+            console.log(err);
+        })
+        let push = jobs.push(job)
+        // console.log(push); Print the number of arrays passed into the function
+    }
+    let results = await Promise.all(jobs);
+    return results;
+    
+    
+}
+let name = ["quotes"];
+getUser(name);
+  
+
+
