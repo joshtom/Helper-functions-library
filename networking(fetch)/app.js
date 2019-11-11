@@ -43,3 +43,13 @@ fetch('https://api.github.com/users', {mode: 'cors'})
  }
 //  Function that parses json response
 const json = response => { return response.json() };
+
+fetch('https://api.github.com/users')
+.then(status)
+.then(json)
+.then((data) => {
+    console.log('Request succeeded with json response', data);
+})
+.catch((err) => {
+    console.log('Request failed', err);
+})
