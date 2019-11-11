@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joshtom/Helper-functions-library/issues"
   },
-  "homepage": "https://github.com/joshtom/Helper-functions-library#readme"
+  "homepage": "https://github.com/joshtom/Helper-functions-library#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
 }
