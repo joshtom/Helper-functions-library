@@ -98,7 +98,9 @@ fetch('https://api.github.com/users', {mode: 'cors'})
 
 //   }
 
- async function getUser (names) {
+/**
+ * FETCHING USING ASYNC AND AWAIT TO FETCH DATA ASYNCHRONOUSLY
+ *  async function getUser (names) {
     let jobs = [];
     for(name of names) {
         // let job = fetch(`https://api.github.com/users/${name}`)
@@ -120,6 +122,17 @@ fetch('https://api.github.com/users', {mode: 'cors'})
 }
 let name = ["quotes"];
 getUser(name);
+
+ */
+
+ /**
+  * Sending Credentials with a Fetch Request
+  * Credentials such as Cookies
+  */
+ fetch(url, {
+     credentials: `inlude`
+ })
+
   
 
 
