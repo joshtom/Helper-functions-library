@@ -1,3 +1,4 @@
+const fetch = require("../node_modules/node-fetch");
 /*
  *
  *
