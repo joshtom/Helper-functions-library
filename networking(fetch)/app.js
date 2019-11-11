@@ -29,3 +29,15 @@ fetch('https://api.github.com/users', {mode: 'cors'})
   });
  * 
  */
+
+ /*
+   CHAINING PROMISES WITH FETCH
+  */
+//  Function that holds response error
+ function status(response) {
+     if(response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response);
+     } else {
+         return Promise.reject(new Error(response.statusText));
+     }
+ }
