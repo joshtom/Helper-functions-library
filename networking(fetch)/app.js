@@ -170,7 +170,7 @@ function postData() {
         console.log('Error', error);
     }
 };
-
+postData();
   
 
 
