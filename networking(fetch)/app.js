@@ -152,6 +152,25 @@ export function fetchCredentials() {
     })
 }
 
+function postData() {
+    const url = '.post.json';
+    const data = {username: 'Olajide joshua'};;
+
+    try{
+        const response = await fetch(url, {
+            method: "POST", // PUT
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const json = await response.json();
+        console.log('Success', JSON.stringify(json));
+    } catch(error) {
+        console.log('Error', error);
+    }
+};
+
   
 
 
