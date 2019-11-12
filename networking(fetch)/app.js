@@ -22,7 +22,7 @@ const json = response => { return response.json() };
  * 
  * 
  */
-export function fetchWithHeader() {
+ function fetchWithHeader() {
     fetch('https://api.github.com/users?since=135').then(function(response) {
     console.log(response.headers.get('Content-Type'));
     console.log(response.headers.get('Date'));
@@ -38,7 +38,7 @@ export function fetchWithHeader() {
 * 
  */
  
- export function fetchWithResponseType() {
+  function fetchWithResponseType() {
     fetch('https://api.github.com/users', {mode: 'cors'})
     .then(function(response) {
       return response.text();
@@ -56,7 +56,7 @@ export function fetchWithHeader() {
  * 
  * 
  */
-export function normalFetch() {
+ function normalFetch() {
     fetch('https://api.github.com/users/joshtom')
     .then(status)
     .then(json)
@@ -73,7 +73,7 @@ export function normalFetch() {
  * POST request with a Fetch Request
  * 
  *  */
-export function postFetch() {
+ function postFetch() {
     fetch("https://api.github.com/users/joshtom", {
     method: 'POST',
     headers: {
@@ -93,8 +93,7 @@ export function postFetch() {
  /**
   * FUNCTION THAT RETURN GITHUB USERS GISTS
   */
-
-  export function fetchAsync() {
+   function fetchAsync() {
     async function getUsers(names) {
         let jobs = [];
     
@@ -115,7 +114,7 @@ export function postFetch() {
 /**
  * FETCHING USING ASYNC AND AWAIT TO FETCH DATA ASYNCHRONOUSLY
  * */
-export function asyncAwait() {
+ function asyncAwait() {
     async function getUser (names) {
         let jobs = [];
         for(name of names) {
@@ -146,31 +145,12 @@ export function asyncAwait() {
   * Sending Credentials with a Fetch Request
   * Credentials such as Cookies
   */
-export function fetchCredentials() {
+ function fetchCredentials() {
     fetch(url, {
         credentials: `include`
     })
 }
 
-function postData() {
-    const url = '.post.json';
-    const data = {username: 'Olajide joshua'};;
 
-    try{
-        const response = await fetch(url, {
-            method: "POST", // PUT
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const json = await response.json();
-        console.log('Success', JSON.stringify(json));
-    } catch(error) {
-        console.log('Error', error);
-    }
-};
-postData();
-  
 
 
