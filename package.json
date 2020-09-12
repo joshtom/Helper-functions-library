@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/joshtom/Helper-functions-library#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
